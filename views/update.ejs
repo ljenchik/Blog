@@ -1,0 +1,22 @@
+<%- include('partials/header'); -%>
+
+<h1>Update or Delete</h1>
+<form action="/posts/<%= postTitle %>/update" method="post" >
+    <div class="form-group mb-3">
+      <label>Title</label> 
+      <input type="text" name="entryTitle" class="form-control" value="<%= postTitle %>">
+      <label>Post</label> 
+      <textarea type="text" name="entryBody" class="form-control" rows="5"/><%= postBody %></textarea>
+  </div>
+    
+    <button type="submit" class="btn btn-primary mr-4">Publish</button>
+   
+  </form>
+  <br />
+  
+  <form action="/posts/<%= postTitle %>/delete" method="post" >
+    <button type="submit" class="btn btn-primary mr-4">Delete</button>
+  </form>
+
+
+<%- include('partials/footer'); -%>
