@@ -92,34 +92,23 @@ app.get("/posts/:post/update", function (req, res) {
   });
 });
 
-app.post("/posts/:post/update", function (req, res) {
+app.post("/posts/:post/update", async function (req, res) {
   const parameter = _.lowerCase(req.params.post);
   
-  Blog.findOneAndUpdate(
-    { title: parameter },
-    {
-      title: req.body.entryTitle,
-      body: req.body.entryBody,
-      id: req.body._id,
-    }
-  ).then(function(post) {
-    console.log("Updated!");
-    console.log(post);
-  }
-  );
+  Blog.findOneAndUpdate({title: parameter},  {
+    title: req.body.entryTitle,
+    body: req.body.entryBody,
+  }).then(console.log("Updated!"));
   res.redirect("/");
 });
 
-// app.post("/posts/:post/delete", function (req, res) {
-//   const parameter = _.lowerCase(req.params.post);
-//   posts.forEach(function (post) {
-//     const postTitle = _.lowerCase(post.title);
-//     if (postTitle === parameter) {
-//       posts = posts.filter((element) => element.id != post.id);
-//     }
-//   });
-//   res.redirect("/");
-// });
+
+// Delete a blog
+app.post("/posts/:post/delete", function (req, res) {
+  const parameter = _.lowerCase(req.params.post);
+  Blog.findOneAndDelete({title: parameter}).then(console.log("Deleted!"));
+  res.redirect("/");
+});
 
 app.get("/about", function (req, res) {
   res.render("about", { about: aboutContent });
