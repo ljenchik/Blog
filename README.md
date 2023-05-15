@@ -2,11 +2,23 @@
 
 ### The blog application allows users to create, edit, and delete blog posts
 
-### Technologies used: Node.js, Express, body-parser, EJS
+### Technologies used: Node.js, Express, body-parser, EJS, mongoose, mongoDB
 
-### To start application 
-    
-    node app.js
+## Required software
+
+- Docker
+- Node.js
+
+## To run the application
+
+From command line
+ 
+```bash
+ git clone https://github.com/ljenchik/Blog.git
+ docker run -d -p 27017:27017 --name test-mongo mongo:latest
+ npm install
+ nodemon app.js
+```
 
 
 
